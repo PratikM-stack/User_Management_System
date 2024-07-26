@@ -2,71 +2,71 @@ from PyQt5.QtWidgets import QLabel,QLineEdit,QDateEdit,QPushButton,QVBoxLayout,Q
 from PyQt5.QtGui import QPixmap,QFont
 from PyQt5.QtCore import Qt
 from PyQt5 import QtCore,QtGui
-from info.c2w_info import C2W_Info
+from info.UM_info import UM_Info
 from dbConfig import db
 
-class C2W_UserProfileForm(QWidget):
+class UM_UserProfileForm(QWidget):
     def __init__(self, main_widget, outerWidgetLogin):
         super().__init__()
         self.main_widget=main_widget
         self.outerWidgetLogin=outerWidgetLogin
-        self.c2w_init_ui(main_widget)
+        self.UM_init_ui(main_widget)
     
-    def c2w_init_ui(self,main_widget):
+    def UM_init_ui(self,main_widget):
         header_label=QLabel('User Info Form')
         header_label.setAlignment(Qt.AlignCenter)
         header_label.setStyleSheet('background-color: #003A6B; color: white;padding: 10px; font-size: 22px; max-height:40px')
         
         self.backbtn=QPushButton("about us")
-        self.backbtn.clicked.connect(lambda:self.c2w_about_us())
+        self.backbtn.clicked.connect(lambda:self.UM_about_us())
         self.backbtn.setStyleSheet("background:qlineargradient(x1:0,y1:0,x2:1,y2:0,stop:0 #013565, stop:1 #057be7);max-width:100px;font-size:20px;color:#ffffff;margin-top:10px")
         
-        self.c2w_first_name_edit=QLineEdit()
-        self.c2w_last_name_edit=QLineEdit()
-        self.c2w_mobile_no_edit=QLineEdit()
-        self.c2w_college_name_edit = QLineEdit()
-        self.c2w_date_of_birth = QDateEdit()
-        self.c2w_age = QLineEdit()
-        self.c2w_profile_photo_label = QLabel('No file selected')
-        self.c2w_gender_radio_male = QRadioButton('Male')
-        self.c2w_gender_radio_female = QRadioButton('Female')
-        self.c2w_height_edit = QLineEdit()
+        self.UM_first_name_edit=QLineEdit()
+        self.UM_last_name_edit=QLineEdit()
+        self.UM_mobile_no_edit=QLineEdit()
+        self.UM_college_name_edit = QLineEdit()
+        self.UM_date_of_birth = QDateEdit()
+        self.UM_age = QLineEdit()
+        self.UM_profile_photo_label = QLabel('No file selected')
+        self.UM_gender_radio_male = QRadioButton('Male')
+        self.UM_gender_radio_female = QRadioButton('Female')
+        self.UM_height_edit = QLineEdit()
         # Setting font for form elements
-        self.c2w_gender_radio_male.setFont(QFont('Arial', 12))
-        self.c2w_gender_radio_female.setFont(QFont('Arial', 12))
-        self.c2w_height_edit.setFont(QFont('Arial', 12))
-        self.c2w_age.setFont(QFont('Arial', 12))
-        self.c2w_date_of_birth.setDateRange(self.c2w_date_of_birth.minimumDate(),self.c2w_date_of_birth.maximumDate())
+        self.UM_gender_radio_male.setFont(QFont('Arial', 12))
+        self.UM_gender_radio_female.setFont(QFont('Arial', 12))
+        self.UM_height_edit.setFont(QFont('Arial', 12))
+        self.UM_age.setFont(QFont('Arial', 12))
+        self.UM_date_of_birth.setDateRange(self.UM_date_of_birth.minimumDate(),self.UM_date_of_birth.maximumDate())
         
-        self.c2w_image_label=QLabel()
-        self.c2w_image_label.setAlignment(Qt.AlignCenter)
-        self.c2w_image_label.setFixedSize(200,200)
-        self.c2w_image_label.hide()
+        self.UM_image_label=QLabel()
+        self.UM_image_label.setAlignment(Qt.AlignCenter)
+        self.UM_image_label.setFixedSize(200,200)
+        self.UM_image_label.hide()
         
-        self.c2w_submit_button = QPushButton('Save')
-        self.c2w_view_record = QPushButton("View All Records")
+        self.UM_submit_button = QPushButton('Save')
+        self.UM_view_record = QPushButton("View All Records")
         # Output label
-        self.c2w_output_label = QLabel()
-        self.c2w_output_label.setStyleSheet('font-size: 14px; margin-top:10px;')
+        self.UM_output_label = QLabel()
+        self.UM_output_label.setStyleSheet('font-size: 14px; margin-top:10px;')
         # Labels
-        self.c2w_age_label = QLabel('Enter Age:')
-        self.c2w_age_label.setFont(QFont('Arial', 12))
-        self.c2w_gender_label = QLabel('Gender:')
-        self.c2w_gender_label.setFont(QFont('Arial', 12))
-        self.c2w_height_label = QLabel("Height(cm):")
-        self.c2w_height_label.setFont(QFont('Arial', 12))
+        self.UM_age_label = QLabel('Enter Age:')
+        self.UM_age_label.setFont(QFont('Arial', 12))
+        self.UM_gender_label = QLabel('Gender:')
+        self.UM_gender_label.setFont(QFont('Arial', 12))
+        self.UM_height_label = QLabel("Height(cm):")
+        self.UM_height_label.setFont(QFont('Arial', 12))
         
         # Form layout
         form_layout = QFormLayout()
-        form_layout.addRow('Enter First Name:', self.c2w_first_name_edit)
-        form_layout.addRow('Enter Last Name:', self.c2w_last_name_edit)
-        form_layout.addRow('Enter Mobile No:', self.c2w_mobile_no_edit)
-        form_layout.addRow('Enter College Name:', self.c2w_college_name_edit)
-        form_layout.addRow('Enter DOB:', self.c2w_date_of_birth)
-        form_layout.addRow(self.c2w_age_label,self.c2w_age)
-        form_layout.addRow(self.c2w_gender_label, self.c2w_gender_radio_male)
-        form_layout.addRow('', self.c2w_gender_radio_female)
-        form_layout.addRow(self.c2w_height_label, self.c2w_height_edit)
+        form_layout.addRow('Enter First Name:', self.UM_first_name_edit)
+        form_layout.addRow('Enter Last Name:', self.UM_last_name_edit)
+        form_layout.addRow('Enter Mobile No:', self.UM_mobile_no_edit)
+        form_layout.addRow('Enter College Name:', self.UM_college_name_edit)
+        form_layout.addRow('Enter DOB:', self.UM_date_of_birth)
+        form_layout.addRow(self.UM_age_label,self.UM_age)
+        form_layout.addRow(self.UM_gender_label, self.UM_gender_radio_male)
+        form_layout.addRow('', self.UM_gender_radio_female)
+        form_layout.addRow(self.UM_height_label, self.UM_height_edit)
         form_layout.setContentsMargins(0, 50, 0, 0)
         form_layout.setVerticalSpacing(5)
         # Setting font for form layout items
@@ -81,8 +81,8 @@ class C2W_UserProfileForm(QWidget):
         #button layout
         
         button_layout=QVBoxLayout()
-        button_layout.addWidget(self.c2w_submit_button)
-        button_layout.addWidget(self.c2w_view_record)
+        button_layout.addWidget(self.UM_submit_button)
+        button_layout.addWidget(self.UM_view_record)
         button_layout.setContentsMargins(0,200,0,0)
         
         #left half layout
@@ -91,7 +91,7 @@ class C2W_UserProfileForm(QWidget):
         left_layout.addWidget(self.backbtn)
         left_layout.addLayout(form_layout)
         left_layout.addLayout(button_layout)
-        left_layout.addWidget(self.c2w_output_label)
+        left_layout.addWidget(self.UM_output_label)
         
         self.splitter=QSplitter(Qt.Horizontal)
         self.splitter.addWidget(QWidget())
@@ -102,30 +102,30 @@ class C2W_UserProfileForm(QWidget):
         self.main_layout.addWidget(self.splitter)
         main_widget.addLayout(self.main_layout)
         
-        self.c2w_submit_button.clicked.connect(lambda:self.c2w_submit_form())
-        self.c2w_view_record.clicked.connect(lambda:self.c2w_fetch_records())
+        self.UM_submit_button.clicked.connect(lambda:self.UM_submit_form())
+        self.UM_view_record.clicked.connect(lambda:self.UM_fetch_records())
         
-    def c2w_submit_form(self):
+    def UM_submit_form(self):
         # Validation
-        if not self.c2w_first_name_edit.text() or not self.c2w_last_name_edit.text() or not self.c2w_mobile_no_edit.text():
+        if not self.UM_first_name_edit.text() or not self.UM_last_name_edit.text() or not self.UM_mobile_no_edit.text():
 
         # Display an error message if any of the required fields are empty
             QMessageBox.critical(self, "Error", "Please fill in all required fields.")
 
             return
         # Mobile number validation
-        mobile_no = self.c2w_mobile_no_edit.text()
+        mobile_no = self.UM_mobile_no_edit.text()
         if not mobile_no.isdigit() or len(mobile_no) != 10:
             QMessageBox.critical(self, "Error", "Please enter a valid 10-digit mobile number.")
             return
         # Get the values from the form
-        first_name = self.c2w_first_name_edit.text()
-        last_name = self.c2w_last_name_edit.text()
-        gender = 'Male' if self.c2w_gender_radio_male.isChecked() else 'Female'
-        height = self.c2w_height_edit.text()
-        college_name = self.c2w_college_name_edit.text()
-        dob = self.c2w_date_of_birth.text()
-        age = self.c2w_age.text()
+        first_name = self.UM_first_name_edit.text()
+        last_name = self.UM_last_name_edit.text()
+        gender = 'Male' if self.UM_gender_radio_male.isChecked() else 'Female'
+        height = self.UM_height_edit.text()
+        college_name = self.UM_college_name_edit.text()
+        dob = self.UM_date_of_birth.text()
+        age = self.UM_age.text()
         
         # Form output text
         output_text = f"Name: {first_name} {last_name}\n" \
@@ -160,8 +160,8 @@ class C2W_UserProfileForm(QWidget):
         QMessageBox.information(self, "Success", success_message)
         
     # Method to fetch and display all records
-    def c2w_fetch_records(self):
+    def UM_fetch_records(self):
         self.main_layout.removeWidget(self.splitter)
-        obj = C2W_Info(self.main_layout, C2W_UserProfileForm)
-    def c2w_about_us(self):
+        obj = UM_Info(self.main_layout, UM_UserProfileForm)
+    def UM_about_us(self):
         QtGui.QDesktopServices.openUrl(QtCore.QUrl("https://www.core2web.in/about-us"))
