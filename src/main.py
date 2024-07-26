@@ -1,6 +1,6 @@
 import sys
 from PyQt5.QtWidgets import QApplication,QVBoxLayout
-from login.c2w_login import LoginWindow
+from login.UM_login import LoginWindow
 from PyQt5 import QtGui
 
 if __name__=="__main__":
